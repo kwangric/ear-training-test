@@ -108,7 +108,7 @@ const Game = () => {
           </button>
         </>
       ) : (
-        <button onClick={setGame}>Start</button>
+        <button onClick={setGame}>Start (Easy)</button>
       )}
     </div>
   )
