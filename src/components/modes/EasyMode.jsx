@@ -13,6 +13,16 @@ const Game = () => {
 
   // Intervals
   const easyIntervals = [0, 2, 4, 5, 7, 9, 11, 12]
+  const easyIntervalNames = [
+    'unison',
+    'major second',
+    'major third',
+    'perfect fourth',
+    'perfect fifth',
+    'major sixth',
+    'major seventh',
+    'octave'
+  ]
 
   // Synth
   const synth = new Tone.Synth().toDestination()
@@ -28,13 +38,9 @@ const Game = () => {
     setGame()
   }, [])
 
-  const repeatSequence = () => {
-    sequence(initialNote, endNote)
-  }
-
   const setGame = () => {
     const first = Math.floor(Math.random() * 12)
-    const newInterval = easyIntervals[Math.floor(Math.random() * 7)]
+    const newInterval = easyIntervals[Math.floor(Math.random() * 8)]
     const second = first + newInterval
     const firstNote = notes[first]
     const secondNote = notes[second]
@@ -43,6 +49,10 @@ const Game = () => {
     setInterval(newInterval)
     setStatus(true)
     sequence(firstNote, secondNote)
+  }
+
+  const repeatSequence = () => {
+    sequence(initialNote, endNote)
   }
 
   const selectInterval = (event) => {
@@ -71,33 +81,22 @@ const Game = () => {
     <div>
       {status ? (
         <>
-          <button onClick={repeatSequence} value="0">
-            Repeat
-          </button>
-          <button onClick={selectInterval} value="0" name="unison">
-            Unison
-          </button>
-          <button onClick={selectInterval} value="2" name="major second">
-            Major Second
-          </button>
-          <button onClick={selectInterval} value="4" name="major third">
-            Major Third
-          </button>
-          <button onClick={selectInterval} value="5" name="perfect fourth">
-            Perfect Fourth
-          </button>
-          <button onClick={selectInterval} value="7" name="perfect fifth">
-            Perfect Fifth
-          </button>
-          <button onClick={selectInterval} value="9" name="major sixth">
-            Major Sixth
-          </button>
-          <button onClick={selectInterval} value="11" name="major seventh">
-            Major Seventh
-          </button>
-          <button onClick={selectInterval} value="12" name="octave">
-            Octave
-          </button>
+          <button onClick={repeatSequence}>Repeat</button>
+          {easyIntervals.map((interval, index) => (
+            <button
+              onClick={selectInterval}
+              value={interval}
+              key={index}
+              name={easyIntervalNames[index]}
+            >
+              {easyIntervalNames[index]
+                .split(' ')
+                .map(
+                  (word) => word[0].toUpperCase() + word.slice(1, word.length)
+                )
+                .join(' ')}
+            </button>
+          ))}
         </>
       ) : (
         <>
