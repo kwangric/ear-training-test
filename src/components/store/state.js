@@ -1,18 +1,26 @@
 // Action Type
 const START_GAME = 'START_GAME'
 const END_GAME = 'END_GAME'
+const CHANGE_MODE = 'CHANGE_MODE'
 
 // Action Creator
-export const startGame = (mode) => {
+export const startGame = (difficulty) => {
   return {
     type: START_GAME,
-    mode
+    difficulty
   }
 }
 
 export const endGame = () => {
   return {
     type: END_GAME
+  }
+}
+
+export const changeMode = (mode) => {
+  return {
+    type: CHANGE_MODE,
+    mode
   }
 }
 
@@ -43,14 +51,16 @@ const notes = [
   'Bb4',
   'B4'
 ]
-const initialState = { mode: false, notes }
+const initialState = { difficulty: false, mode: 'ascending', notes }
 
 export default function statusReducer(state = initialState, action) {
   switch (action.type) {
     case START_GAME:
-      return { ...state, mode: action.mode }
+      return { ...state, difficulty: action.difficulty }
     case END_GAME:
-      return { ...state, mode: false }
+      return { ...state, difficulty: false }
+    case CHANGE_MODE:
+      return { ...state, mode: action.mode }
     default:
       return state
   }

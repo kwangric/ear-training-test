@@ -1,24 +1,25 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import EasyMode from './modes/EasyMode'
-import HardMode from './modes/HardMode'
+import Easy from './difficulties/Easy'
+import Hard from './difficulties/Hard'
+import Modes from './Modes'
 import { startGame } from './store/state'
 
 const Game = () => {
-  const mode = useSelector((state) => state.mode)
+  const difficulty = useSelector((state) => state.difficulty)
   const dispatch = useDispatch()
 
-  // Select Mode
+  // Select Difficulty
   const selectMode = (event) => {
     dispatch(startGame(event.target.value))
   }
 
   const toggleMode = () => {
-    switch (mode) {
+    switch (difficulty) {
       case 'easy':
-        return <EasyMode />
+        return <Easy />
       case 'hard':
-        return <HardMode />
+        return <Hard />
       case false:
         return (
           <>
@@ -33,7 +34,7 @@ const Game = () => {
     }
   }
 
-  return <div>{toggleMode()}</div>
+  return <div>{toggleMode()}<Modes /></div>
 }
 
 export default Game
