@@ -21,7 +21,7 @@ const Modes = () => {
           .join(' ')}`}</p>
       ) : (
         <div>
-          <label htmlFor="mode">Choose a car:</label>
+          <label htmlFor="mode">Choose mode:</label>
           <select
             id="mode"
             name="mode"
