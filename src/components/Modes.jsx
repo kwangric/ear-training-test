@@ -33,7 +33,7 @@ const Modes = () => {
             <option value="ascending & descending">
               Ascending & Descending
             </option>
-            <option value="harmonic">Harmonic</option>
+            {/* <option value="harmonic">Harmonic</option> */}
           </select>
         </div>
       )}

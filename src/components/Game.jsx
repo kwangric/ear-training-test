@@ -10,11 +10,11 @@ const Game = () => {
   const dispatch = useDispatch()
 
   // Select Difficulty
-  const selectMode = (event) => {
+  const selectDifficulty = (event) => {
     dispatch(startGame(event.target.value))
   }
 
-  const toggleMode = () => {
+  const toggleDifficulty = () => {
     switch (difficulty) {
       case 'easy':
         return <Easy />
@@ -23,10 +23,10 @@ const Game = () => {
       case false:
         return (
           <>
-            <button onClick={selectMode} value="easy">
+            <button onClick={selectDifficulty} value="easy">
               Start (Easy)
             </button>
-            <button onClick={selectMode} value="hard">
+            <button onClick={selectDifficulty} value="hard">
               Start (Hard)
             </button>
           </>
@@ -34,7 +34,12 @@ const Game = () => {
     }
   }
 
-  return <div>{toggleMode()}<Modes /></div>
+  return (
+    <div>
+      {toggleDifficulty()}
+      <Modes />
+    </div>
+  )
 }
 
 export default Game

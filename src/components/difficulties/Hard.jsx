@@ -6,6 +6,7 @@ import * as Tone from 'tone'
 
 const Game = () => {
   const notes = useSelector((state) => state.notes)
+  const mode = useSelector((state) => state.mode)
   const dispatch = useDispatch()
   const [status, setStatus] = useState(true)
   const [initialNote, setInitialNote] = useState(null)
@@ -45,14 +46,31 @@ const Game = () => {
   }, [])
 
   const setGame = () => {
-    const first = Math.floor(Math.random() * 12)
-    const newInterval = hardIntervals[Math.floor(Math.random() * 13)]
+    let first
+    let newInterval
+    if (mode === 'ascending') {
+      newInterval = hardIntervals[Math.floor(Math.random() * 13)]
+      first = Math.floor(Math.random() * (24 - newInterval))
+    }
+    if (mode === 'descending') {
+      newInterval = hardIntervals[Math.floor(Math.random() * 13)] * -1
+      first = Math.abs(Math.ceil(Math.random() * (24 + newInterval)) - 24)
+    }
+    if (mode === 'ascending & descending') {
+      if (Math.floor(Math.random() * 2) === 1) {
+        newInterval = hardIntervals[Math.floor(Math.random() * 13)]
+        first = Math.floor(Math.random() * (24 - newInterval))
+      } else {
+        newInterval = hardIntervals[Math.floor(Math.random() * 13)] * -1
+        first = Math.abs(Math.ceil(Math.random() * (24 + newInterval)) - 24)
+      }
+    }
     const second = first + newInterval
     const firstNote = notes[first]
     const secondNote = notes[second]
     setInitialNote(firstNote)
     setEndNote(secondNote)
-    setInterval(newInterval)
+    setInterval(Math.abs(newInterval))
     setStatus(true)
     sequence(firstNote, secondNote)
   }
