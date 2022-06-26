@@ -16,7 +16,10 @@ function App() {
       {status ? (
         <Game />
       ) : (
-        <button onClick={() => startGame(true)}>Start Game</button>
+        <div>
+          <h1>Tone Expert</h1>
+          <button onClick={() => startGame(true)}>Start Game</button>
+        </div>
       )}
     </>
   )

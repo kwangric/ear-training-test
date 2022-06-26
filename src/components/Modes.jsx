@@ -15,10 +15,7 @@ const Modes = () => {
   return (
     <>
       {difficulty ? (
-        <p>{`Mode: ${mode
-          .split(' ')
-          .map((word) => word[0].toUpperCase() + word.slice(1, word.length))
-          .join(' ')}`}</p>
+        <></>
       ) : (
         <div>
           <label htmlFor="mode">Choose mode:</label>

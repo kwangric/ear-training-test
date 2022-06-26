@@ -24,12 +24,15 @@ const Game = () => {
       case false:
         return (
           <>
+          <h3>Choose Difficulty & Mode</h3>
             <button onClick={selectDifficulty} value="easy">
               Start (Easy)
             </button>
             <button onClick={selectDifficulty} value="hard">
               Start (Hard)
             </button>
+            <br />
+            <br />
           </>
         )
     }

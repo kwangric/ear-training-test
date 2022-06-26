@@ -110,6 +110,12 @@ const Game = () => {
 
   return (
     <div>
+      <h3>
+        {`Easy (${mode
+          .split(' ')
+          .map((word) => word[0].toUpperCase() + word.slice(1, word.length))
+          .join(' ')})`}
+      </h3>
       {status ? (
         <>
           <button onClick={repeatSequence}>Repeat</button>
