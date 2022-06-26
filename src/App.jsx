@@ -18,6 +18,7 @@ function App() {
       ) : (
         <div>
           <h1>Tone Expert</h1>
+          <p>(Best played on desktop)</p>
           <button onClick={() => startGame(true)}>Start Game</button>
         </div>
       )}
