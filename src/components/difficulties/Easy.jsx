@@ -102,6 +102,7 @@ const Game = () => {
 
   const abandonGame = () => {
     dispatch(resetScore())
+    setAnswer(false)
     setInitialNote(null)
     setEndNote(null)
     setInterval(null)
