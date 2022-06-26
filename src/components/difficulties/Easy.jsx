@@ -119,7 +119,6 @@ const Game = () => {
       </h3>
       {status ? (
         <>
-          <button onClick={repeatSequence}>Repeat</button>
           {easyIntervals.map((interval, index) => (
             <button
               onClick={selectInterval}
@@ -135,6 +134,9 @@ const Game = () => {
                 .join(' ')}
             </button>
           ))}
+          <br />
+          <br />
+          <button onClick={repeatSequence}>Repeat</button>
           <button onClick={abandonGame}>Give Up</button>
           <br />
         </>
