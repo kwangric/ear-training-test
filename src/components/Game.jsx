@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Easy from './difficulties/Easy'
 import Hard from './difficulties/Hard'
 import Modes from './Modes'
+import Score from './Score'
 import { startGame } from './store/state'
 
 const Game = () => {
@@ -38,6 +39,7 @@ const Game = () => {
     <div>
       {toggleDifficulty()}
       <Modes />
+      <Score />
     </div>
   )
 }

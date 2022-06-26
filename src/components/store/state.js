@@ -2,6 +2,8 @@
 const START_GAME = 'START_GAME'
 const END_GAME = 'END_GAME'
 const CHANGE_MODE = 'CHANGE_MODE'
+const INCREASE_SCORE = 'INCREASE_SCORE'
+const RESET_SCORE = 'RESET_SCORE'
 
 // Action Creator
 export const startGame = (difficulty) => {
@@ -21,6 +23,18 @@ export const changeMode = (mode) => {
   return {
     type: CHANGE_MODE,
     mode
+  }
+}
+
+export const increaseScore = () => {
+  return {
+    type: INCREASE_SCORE
+  }
+}
+
+export const resetScore = () => {
+  return {
+    type: RESET_SCORE
   }
 }
 
@@ -51,7 +65,13 @@ const notes = [
   'Bb4',
   'B4'
 ]
-const initialState = { difficulty: false, mode: 'ascending', notes }
+const initialState = {
+  difficulty: false,
+  mode: 'ascending',
+  score: 0,
+  highScore: 0,
+  notes
+}
 
 export default function statusReducer(state = initialState, action) {
   switch (action.type) {
@@ -61,6 +81,13 @@ export default function statusReducer(state = initialState, action) {
       return { ...state, difficulty: false }
     case CHANGE_MODE:
       return { ...state, mode: action.mode }
+    case INCREASE_SCORE:
+      return { ...state, score: state.score + 1 }
+    case RESET_SCORE:
+      if (state.score > state.highScore) {
+        return { ...state, score: 0, highScore: state.score }
+      }
+      return { ...state, score: 0 }
     default:
       return state
   }

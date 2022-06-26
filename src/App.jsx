@@ -1,17 +1,23 @@
-import React from 'react'
-// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React, { useState } from 'react'
 import './App.css'
+import Game from './components/Game'
+import * as Tone from 'tone'
 
 function App() {
+  const [status, setStatus] = useState(false)
+
+  const startGame = async () => {
+    await Tone.start()
+    setStatus(true)
+  }
+
   return (
     <>
-      <div className="lines" />
-      <div className="vny">
-        <h1 className="title glitchy-text">this</h1>
-        <span className="subtitle" aria-hidden>
-          Are you having fun yet?
-        </span>
-      </div>
+      {status ? (
+        <Game />
+      ) : (
+        <button onClick={() => startGame(true)}>Start Game</button>
+      )}
     </>
   )
 }
