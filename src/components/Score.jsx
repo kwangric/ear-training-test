@@ -19,15 +19,60 @@ const Score = () => {
         <></>
       ) : (
         <>
-          <h3>High Scores</h3>
-          <strong>Easy</strong>
-          <p>{`Ascending: ${highScore.easy.ascending}`}</p>
-          <p>{`Descending: ${highScore.easy.descending}`}</p>
-          <p>{`Ascending & Descending: ${highScore.easy['ascending & descending']}`}</p>
-          <strong>Hard</strong>
-          <p>{`Ascending: ${highScore.hard.ascending}`}</p>
-          <p>{`Descending: ${highScore.hard.descending}`}</p>
-          <p>{`Ascending & Descending: ${highScore.hard['ascending & descending']}`}</p>
+          {highScore.easy.ascending > 0 ||
+          highScore.easy.descending > 0 ||
+          highScore.easy['ascending & descending'] > 0 ||
+          highScore.hard.ascending > 0 ||
+          highScore.hard.descending > 0 ||
+          highScore.hard['ascending & descending'] > 0 ? (
+            <h3>High Scores</h3>
+          ) : (
+            <></>
+          )}
+          {highScore.easy.ascending > 0 ||
+          highScore.easy.descending > 0 ||
+          highScore.easy['ascending & descending'] > 0 ? (
+            <strong>Easy</strong>
+          ) : (
+            <></>
+          )}
+          {highScore.easy.ascending > 0 ? (
+            <p>{`Ascending: ${highScore.easy.ascending}`}</p>
+          ) : (
+            <></>
+          )}
+          {highScore.easy.descending > 0 ? (
+            <p>{`Descending: ${highScore.easy.descending}`}</p>
+          ) : (
+            <></>
+          )}
+          {highScore.easy['ascending & descending'] > 0 ? (
+            <p>{`Ascending & Descending: ${highScore.easy['ascending & descending']}`}</p>
+          ) : (
+            <></>
+          )}
+          {highScore.hard.ascending > 0 ||
+          highScore.hard.descending > 0 ||
+          highScore.hard['ascending & descending'] > 0 ? (
+            <strong>Hard</strong>
+          ) : (
+            <></>
+          )}
+          {highScore.hard.ascending > 0 ? (
+            <p>{`Ascending: ${highScore.hard.ascending}`}</p>
+          ) : (
+            <></>
+          )}
+          {highScore.hard.descending > 0 ? (
+            <p>{`Descending: ${highScore.hard.descending}`}</p>
+          ) : (
+            <></>
+          )}
+          {highScore.hard['ascending & descending'] > 0 ? (
+            <p>{`Ascending & Descending: ${highScore.hard['ascending & descending']}`}</p>
+          ) : (
+            <></>
+          )}
         </>
       )}
     </div>
