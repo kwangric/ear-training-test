@@ -9,7 +9,7 @@ const Score = () => {
 
   return (
     <div>
-      <p>{`Score: ${score}`}</p>
+      {difficulty ? <p>{`Score: ${score}`}</p> : <></>}
       {highScore[difficulty] && highScore[difficulty][mode] > 0 ? (
         <p>{`High Score: ${highScore[difficulty][mode]}`}</p>
       ) : (
@@ -19,7 +19,7 @@ const Score = () => {
         <></>
       ) : (
         <>
-          <h3>High Scores:</h3>
+          <h3>High Scores</h3>
           <strong>Easy</strong>
           <p>{`Ascending: ${highScore.easy.ascending}`}</p>
           <p>{`Descending: ${highScore.easy.descending}`}</p>
