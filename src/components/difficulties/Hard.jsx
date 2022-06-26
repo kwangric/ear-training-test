@@ -100,18 +100,23 @@ const Game = () => {
       setInterval(null)
       setStatus(false)
     } else {
-      dispatch(resetScore())
+      dispatch(resetScore('hard', mode))
       setAnswer('Try again :(')
     }
   }
 
   const abandonGame = () => {
-    dispatch(resetScore())
+    dispatch(resetScore('hard', mode))
     setAnswer(false)
     setInitialNote(null)
     setEndNote(null)
     setInterval(null)
     setStatus(false)
+  }
+
+  const changeMode = () => {
+    dispatch(resetScore('hard', mode))
+    dispatch(endGame())
   }
 
   return (
@@ -139,13 +144,15 @@ const Game = () => {
                 .join(' ')}
             </button>
           ))}
+          <br />
+          <br />
           <button onClick={repeatSequence}>Repeat</button>
           <button onClick={abandonGame}>Give Up</button>
         </>
       ) : (
         <>
           <button onClick={setGame}>Try Again?</button>
-          <button onClick={() => dispatch(endGame())}>Change Mode</button>
+          <button onClick={changeMode}>Change Mode</button>
         </>
       )}
       {answer ? (

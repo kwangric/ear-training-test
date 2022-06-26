@@ -95,18 +95,23 @@ const Game = () => {
       setInterval(null)
       setStatus(false)
     } else {
-      dispatch(resetScore())
+      dispatch(resetScore('easy', mode))
       setAnswer('Try again :(')
     }
   }
 
   const abandonGame = () => {
-    dispatch(resetScore())
+    dispatch(resetScore('easy', mode))
     setAnswer(false)
     setInitialNote(null)
     setEndNote(null)
     setInterval(null)
     setStatus(false)
+  }
+
+  const changeMode = () => {
+    dispatch(resetScore('easy', mode))
+    dispatch(endGame())
   }
 
   return (
@@ -143,7 +148,7 @@ const Game = () => {
       ) : (
         <>
           <button onClick={setGame}>Try Again?</button>
-          <button onClick={() => dispatch(endGame())}>Change Mode</button>
+          <button onClick={changeMode}>Change Mode</button>
         </>
       )}
       {answer ? (

@@ -32,9 +32,11 @@ export const increaseScore = () => {
   }
 }
 
-export const resetScore = () => {
+export const resetScore = (difficulty, mode) => {
   return {
-    type: RESET_SCORE
+    type: RESET_SCORE,
+    difficulty,
+    mode
   }
 }
 
@@ -69,7 +71,18 @@ const initialState = {
   difficulty: false,
   mode: 'ascending',
   score: 0,
-  highScore: 0,
+  highScore: {
+    easy: {
+      ascending: 0,
+      descending: 0,
+      'ascending & descending': 0
+    },
+    hard: {
+      ascending: 0,
+      descending: 0,
+      'ascending & descending': 0
+    }
+  },
   notes
 }
 
@@ -84,8 +97,18 @@ export default function statusReducer(state = initialState, action) {
     case INCREASE_SCORE:
       return { ...state, score: state.score + 1 }
     case RESET_SCORE:
-      if (state.score > state.highScore) {
-        return { ...state, score: 0, highScore: state.score }
+      if (state.score > state.highScore[action.difficulty][action.mode]) {
+        return {
+          ...state,
+          score: 0,
+          highScore: {
+            ...state.highScore,
+            [action.difficulty]: {
+              ...state.highScore[action.difficulty],
+              [action.mode]: state.score
+            }
+          }
+        }
       }
       return { ...state, score: 0 }
     default:
