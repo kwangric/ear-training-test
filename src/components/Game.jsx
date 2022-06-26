@@ -24,7 +24,7 @@ const Game = () => {
       case false:
         return (
           <>
-          <h3>Choose Difficulty & Mode</h3>
+            <h3>Choose Difficulty & Mode</h3>
             <button onClick={selectDifficulty} value="easy">
               Start (Easy)
             </button>

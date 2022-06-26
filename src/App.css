@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 .lines {
   position: fixed;
   top: 0;
