@@ -25,7 +25,9 @@ const Game = () => {
       case false:
         return (
           <>
-            <Typography variant="h3" sx={{ margin: '1rem' }}>Choose Difficulty & Mode</Typography>
+            <Typography variant="h3" sx={{ margin: '1rem' }}>
+              Choose Difficulty & Mode
+            </Typography>
             <Button
               variant="contained"
               size="large"
