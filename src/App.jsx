@@ -18,7 +18,9 @@ function App() {
         <Game />
       ) : (
         <div>
-          <Typography variant="h1">Tone Expert</Typography>
+          <Typography variant="h1" sx={{ margin: '1rem' }}>
+            Tone Expert
+          </Typography>
           <Typography variant="body1">(Best played on desktop)</Typography>
           <Button
             variant="contained"

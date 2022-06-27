@@ -1,8 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeMode } from './store/state'
-import { FormControl, TextField, MenuItem } from '@mui/material'
-import Select from '@mui/material/Select'
+import { TextField, MenuItem } from '@mui/material'
 
 const Modes = () => {
   const difficulty = useSelector((state) => state.difficulty)
@@ -12,7 +11,6 @@ const Modes = () => {
   // Select Mode
 
   const selectMode = (event) => {
-    console.log(event.target.value)
     dispatch(changeMode(event.target.value))
   }
 

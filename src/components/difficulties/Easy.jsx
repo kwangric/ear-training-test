@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { endGame, increaseScore, resetScore } from '../store/state'
+import { Button, Typography } from '@mui/material'
 import * as Tone from 'tone'
 
 const Game = () => {
@@ -79,24 +80,14 @@ const Game = () => {
   const selectInterval = (event) => {
     if (event.target.value == interval) {
       dispatch(increaseScore())
-      switch (event.target.name) {
-        case 'unison':
-          setAnswer(`Great job! It was unison.`)
-          break
-        case 'octave':
-          setAnswer(`Great job! It was an octave.`)
-          break
-        default:
-          setAnswer(`Great job! It was a ${event.target.name}.`)
-          break
-      }
+      setAnswer('Great job!')
       setInitialNote(null)
       setEndNote(null)
       setInterval(null)
       setStatus(false)
     } else {
       dispatch(resetScore('easy', mode))
-      setAnswer('Try again :(')
+      setAnswer('Try again!')
     }
   }
 
@@ -116,16 +107,27 @@ const Game = () => {
 
   return (
     <div>
-      <h3>
+      <Typography variant="h4" sx={{ margin: '1rem' }}>
         {`Easy (${mode
           .split(' ')
           .map((word) => word[0].toUpperCase() + word.slice(1, word.length))
           .join(' ')})`}
-      </h3>
+      </Typography>
+
+      <Typography
+        variant="body2"
+        sx={{ marginBottom: '1rem', display: 'block' }}
+      >
+        {answer ? answer : '\u00A0'}
+      </Typography>
+
       {status ? (
         <>
           {easyIntervals.map((interval, index) => (
-            <button
+            <Button
+              variant="outlined"
+              size="small"
+              sx={{ margin: '0.25rem' }}
               onClick={selectInterval}
               value={interval}
               key={index}
@@ -137,26 +139,47 @@ const Game = () => {
                   (word) => word[0].toUpperCase() + word.slice(1, word.length)
                 )
                 .join(' ')}
-            </button>
+            </Button>
           ))}
           <br />
           <br />
-          <button onClick={repeatSequence}>Repeat</button>
-          <button onClick={abandonGame}>Give Up</button>
+          <Button
+            variant="outlined"
+            size="large"
+            sx={{ margin: '0.25rem' }}
+            onClick={repeatSequence}
+          >
+            Repeat
+          </Button>
+          <Button
+            variant="outlined"
+            size="large"
+            sx={{ margin: '0.25rem' }}
+            onClick={abandonGame}
+          >
+            Give Up
+          </Button>
           <br />
         </>
       ) : (
         <>
-          <button onClick={setGame}>Try Again?</button>
-          <button onClick={changeMode}>Change Mode</button>
+          <Button
+            variant="outlined"
+            size="large"
+            sx={{ margin: '0.25rem' }}
+            onClick={setGame}
+          >
+            Try Again?
+          </Button>
+          <Button
+            variant="outlined"
+            size="large"
+            sx={{ margin: '0.25rem' }}
+            onClick={changeMode}
+          >
+            Back
+          </Button>
         </>
-      )}
-      {answer ? (
-        <>
-          <p>{`${answer}`}</p>
-        </>
-      ) : (
-        <></>
       )}
     </div>
   )
