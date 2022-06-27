@@ -1,3 +1,5 @@
+import * as Tone from 'tone'
+
 // Action Type
 const START_GAME = 'START_GAME'
 const END_GAME = 'END_GAME'

@@ -5,6 +5,7 @@ import Hard from './difficulties/Hard'
 import Modes from './Modes'
 import Score from './Score'
 import { startGame } from './store/state'
+import { Button, Typography } from '@mui/material'
 
 const Game = () => {
   const difficulty = useSelector((state) => state.difficulty)
@@ -24,13 +25,25 @@ const Game = () => {
       case false:
         return (
           <>
-            <h3>Choose Difficulty & Mode</h3>
-            <button onClick={selectDifficulty} value="easy">
+            <Typography variant="h3">Choose Difficulty & Mode</Typography>
+            <Button
+              variant="contained"
+              size="large"
+              sx={{ margin: '1rem' }}
+              onClick={selectDifficulty}
+              value="easy"
+            >
               Start (Easy)
-            </button>
-            <button onClick={selectDifficulty} value="hard">
+            </Button>
+            <Button
+              variant="contained"
+              size="large"
+              sx={{ margin: '1rem' }}
+              onClick={selectDifficulty}
+              value="hard"
+            >
               Start (Hard)
-            </button>
+            </Button>
             <br />
             <br />
           </>

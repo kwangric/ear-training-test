@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Button, Typography } from '@mui/material'
 
 const Score = () => {
   const score = useSelector((state) => state.score)
@@ -11,7 +12,7 @@ const Score = () => {
     <div>
       {difficulty ? <p>{`Score: ${score}`}</p> : <></>}
       {highScore[difficulty] && highScore[difficulty][mode] > 0 ? (
-        <p>{`High Score: ${highScore[difficulty][mode]}`}</p>
+        <Typography variant="body">{`High Score: ${highScore[difficulty][mode]}`}</Typography>
       ) : (
         <></>
       )}
@@ -25,51 +26,55 @@ const Score = () => {
           highScore.hard.ascending > 0 ||
           highScore.hard.descending > 0 ||
           highScore.hard['ascending & descending'] > 0 ? (
-            <h3>High Scores</h3>
+            <Typography variant="h5">High Scores</Typography>
           ) : (
             <></>
           )}
           {highScore.easy.ascending > 0 ||
           highScore.easy.descending > 0 ||
           highScore.easy['ascending & descending'] > 0 ? (
-            <strong>Easy</strong>
+            <Typography variant="body" sx={{ fontWeight: 'bold' }}>
+              Easy
+            </Typography>
           ) : (
             <></>
           )}
           {highScore.easy.ascending > 0 ? (
-            <p>{`Ascending: ${highScore.easy.ascending}`}</p>
+            <Typography variant="body">{`Ascending: ${highScore.easy.ascending}`}</Typography>
           ) : (
             <></>
           )}
           {highScore.easy.descending > 0 ? (
-            <p>{`Descending: ${highScore.easy.descending}`}</p>
+            <Typography variant="body">{`Descending: ${highScore.easy.descending}`}</Typography>
           ) : (
             <></>
           )}
           {highScore.easy['ascending & descending'] > 0 ? (
-            <p>{`Ascending & Descending: ${highScore.easy['ascending & descending']}`}</p>
+            <Typography variant="body">{`Ascending & Descending: ${highScore.easy['ascending & descending']}`}</Typography>
           ) : (
             <></>
           )}
           {highScore.hard.ascending > 0 ||
           highScore.hard.descending > 0 ||
           highScore.hard['ascending & descending'] > 0 ? (
-            <strong>Hard</strong>
+            <Typography variant="body" sx={{ fontWeight: 'bold' }}>
+              Hard
+            </Typography>
           ) : (
             <></>
           )}
           {highScore.hard.ascending > 0 ? (
-            <p>{`Ascending: ${highScore.hard.ascending}`}</p>
+            <Typography variant="body">{`Ascending: ${highScore.hard.ascending}`}</Typography>
           ) : (
             <></>
           )}
           {highScore.hard.descending > 0 ? (
-            <p>{`Descending: ${highScore.hard.descending}`}</p>
+            <Typography variant="body">{`Descending: ${highScore.hard.descending}`}</Typography>
           ) : (
             <></>
           )}
           {highScore.hard['ascending & descending'] > 0 ? (
-            <p>{`Ascending & Descending: ${highScore.hard['ascending & descending']}`}</p>
+            <Typography variant="body">{`Ascending & Descending: ${highScore.hard['ascending & descending']}`}</Typography>
           ) : (
             <></>
           )}

@@ -1,6 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeMode } from './store/state'
+import { FormControl, TextField, MenuItem } from '@mui/material'
+import Select from '@mui/material/Select'
 
 const Modes = () => {
   const difficulty = useSelector((state) => state.difficulty)
@@ -8,7 +10,9 @@ const Modes = () => {
   const dispatch = useDispatch()
 
   // Select Mode
-  const selectDifficulty = (event) => {
+
+  const selectMode = (event) => {
+    console.log(event.target.value)
     dispatch(changeMode(event.target.value))
   }
 
@@ -18,20 +22,20 @@ const Modes = () => {
         <></>
       ) : (
         <div>
-          <label htmlFor="mode">Choose mode:</label>
-          <select
+          <TextField
+            label="Mode"
+            select
             id="mode"
-            name="mode"
             value={mode}
-            onChange={selectDifficulty}
+            onChange={selectMode}
           >
-            <option value="ascending">Ascending</option>
-            <option value="descending">Descending</option>
-            <option value="ascending & descending">
+            <MenuItem value="ascending">Ascending</MenuItem>
+            <MenuItem value="descending">Descending</MenuItem>
+            <MenuItem value="ascending & descending">
               Ascending & Descending
-            </option>
+            </MenuItem>
             {/* <option value="harmonic">Harmonic</option> */}
-          </select>
+          </TextField>
         </div>
       )}
     </>
