@@ -70,18 +70,18 @@ const notes = [
   'B4'
 ]
 
-let highScore = localStorage.getItem('highScore')
+let highScore = JSON.parse(localStorage.getItem('highScore'))
 if (!highScore) {
   highScore = {
     easy: {
       ascending: 0,
       descending: 0,
-      'ascending & descending': 0
+      ascendingDescending: 0
     },
     hard: {
       ascending: 0,
       descending: 0,
-      'ascending & descending': 0
+      ascendingDescending: 0
     }
   }
   localStorage.setItem('highScore', JSON.stringify(highScore))
@@ -120,7 +120,7 @@ export default function statusReducer(state = initialState, action) {
         return {
           ...state,
           score: 0,
-          highScore: localStorage.getItem('highScore')
+          highScore: JSON.parse(localStorage.getItem('highScore'))
         }
       }
       return { ...state, score: 0 }
