@@ -91,7 +91,7 @@ const initialState = {
 export default function statusReducer(state = initialState, action) {
   switch (action.type) {
     case START_GAME:
-      console.log(state.highScore)
+      console.log(state.highScore.easy.ascending)
       return { ...state, difficulty: action.difficulty }
     case END_GAME:
       console.log(state.highScore)
