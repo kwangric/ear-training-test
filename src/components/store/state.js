@@ -69,22 +69,29 @@ const notes = [
   'Bb4',
   'B4'
 ]
-const initialState = {
-  difficulty: false,
-  mode: 'ascending',
-  score: 0,
-  highScore: {
+
+let highScore = JSON.parse(localStorage.getItem('highScore'))
+if (!highScore) {
+  highScore = {
     easy: {
       ascending: 0,
       descending: 0,
-      'ascending & descending': 0
+      ascendingDescending: 0
     },
     hard: {
       ascending: 0,
       descending: 0,
-      'ascending & descending': 0
+      ascendingDescending: 0
     }
-  },
+  }
+  localStorage.setItem('highScore', JSON.stringify(highScore))
+}
+
+const initialState = {
+  difficulty: false,
+  mode: 'ascending',
+  score: 0,
+  highScore,
   notes
 }
 
@@ -100,16 +107,20 @@ export default function statusReducer(state = initialState, action) {
       return { ...state, score: state.score + 1 }
     case RESET_SCORE:
       if (state.score > state.highScore[action.difficulty][action.mode]) {
-        return {
-          ...state,
-          score: 0,
-          highScore: {
+        localStorage.setItem(
+          'highScore',
+          JSON.stringify({
             ...state.highScore,
             [action.difficulty]: {
               ...state.highScore[action.difficulty],
               [action.mode]: state.score
             }
-          }
+          })
+        )
+        return {
+          ...state,
+          score: 0,
+          highScore: JSON.parse(localStorage.getItem('highScore'))
         }
       }
       return { ...state, score: 0 }

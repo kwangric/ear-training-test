@@ -54,7 +54,7 @@ const Game = () => {
       newInterval = easyIntervals[Math.floor(Math.random() * 8)] * -1
       first = Math.abs(Math.ceil(Math.random() * (24 + newInterval)) - 24)
     }
-    if (mode === 'ascending & descending') {
+    if (mode === 'ascendingDescending') {
       if (Math.floor(Math.random() * 2) === 1) {
         newInterval = easyIntervals[Math.floor(Math.random() * 8)]
         first = Math.floor(Math.random() * (24 - newInterval))
@@ -105,13 +105,25 @@ const Game = () => {
     dispatch(endGame())
   }
 
+  let modeDisplay
+  switch (mode) {
+    case 'ascending':
+      modeDisplay = 'Ascending'
+      break
+    case 'descending':
+      modeDisplay = 'Descending'
+      break
+    case 'ascendingDescending':
+      modeDisplay = 'Ascending & Descending'
+      break
+    default:
+      break
+  }
+
   return (
     <div>
       <Typography variant="h4" sx={{ margin: '1rem' }}>
-        {`Easy (${mode
-          .split(' ')
-          .map((word) => word[0].toUpperCase() + word.slice(1, word.length))
-          .join(' ')})`}
+        {`Easy (${modeDisplay})`}
       </Typography>
 
       <Typography

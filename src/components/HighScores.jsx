@@ -27,7 +27,7 @@ const HighScores = () => {
           </TableRow>
           <TableRow>
             <TableCell>Ascending & Descending</TableCell>
-            <TableCell>{`${highScore.easy['ascending & descending']}`}</TableCell>
+            <TableCell>{`${highScore.easy.ascendingDescending}`}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
@@ -45,7 +45,7 @@ const HighScores = () => {
           </TableRow>
           <TableRow>
             <TableCell>Ascending & Descending</TableCell>
-            <TableCell>{`${highScore.hard['ascending & descending']}`}</TableCell>
+            <TableCell>{`${highScore.hard.ascendingDescending}`}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
