@@ -73,7 +73,7 @@ const initialState = {
   difficulty: false,
   mode: 'ascending',
   score: 0,
-  highScore: JSON.parse(localStorage.getItem('score') || {
+  highScore: localStorage.getItem('score') || {
     easy: {
       ascending: 0,
       descending: 0,
@@ -84,7 +84,7 @@ const initialState = {
       descending: 0,
       'ascending & descending': 0
     }
-  }),
+  },
   notes
 }
 
@@ -115,7 +115,7 @@ export default function statusReducer(state = initialState, action) {
         return {
           ...state,
           score: 0,
-          highScore: JSON.parse(localStorage.getItem('score'))
+          highScore: localStorage.getItem('score')
         }
       }
       return { ...state, score: 0 }
