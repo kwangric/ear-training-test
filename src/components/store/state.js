@@ -69,17 +69,22 @@ const notes = [
   'Bb4',
   'B4'
 ]
-const highScore = localStorage.getItem('score') ?? {
-  easy: {
-    ascending: 0,
-    descending: 0,
-    'ascending & descending': 0
-  },
-  hard: {
-    ascending: 0,
-    descending: 0,
-    'ascending & descending': 0
+
+let highScore = localStorage.getItem('highScore')
+if (!highScore) {
+  highScore = {
+    easy: {
+      ascending: 0,
+      descending: 0,
+      'ascending & descending': 0
+    },
+    hard: {
+      ascending: 0,
+      descending: 0,
+      'ascending & descending': 0
+    }
   }
+  localStorage.setItem('highScore', JSON.stringify(highScore))
 }
 
 const initialState = {
@@ -103,7 +108,7 @@ export default function statusReducer(state = initialState, action) {
     case RESET_SCORE:
       if (state.score > state.highScore[action.difficulty][action.mode]) {
         localStorage.setItem(
-          'score',
+          'highScore',
           JSON.stringify({
             ...state.highScore,
             [action.difficulty]: {
@@ -115,7 +120,7 @@ export default function statusReducer(state = initialState, action) {
         return {
           ...state,
           score: 0,
-          highScore: localStorage.getItem('score')
+          highScore: localStorage.getItem('highScore')
         }
       }
       return { ...state, score: 0 }
