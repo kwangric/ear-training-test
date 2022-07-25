@@ -29,7 +29,7 @@ const Modes = () => {
           >
             <MenuItem value="ascending">Ascending</MenuItem>
             <MenuItem value="descending">Descending</MenuItem>
-            <MenuItem value="ascending & descending">
+            <MenuItem value="ascendingDescending">
               Ascending & Descending
             </MenuItem>
             {/* <option value="harmonic">Harmonic</option> */}
