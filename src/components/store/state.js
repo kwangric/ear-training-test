@@ -73,7 +73,19 @@ const initialState = {
   difficulty: false,
   mode: 'ascending',
   score: 0,
-  highScore: {
+  highScore: localStorage.getItem('score') || {
+    easy: {
+      ascending: 0,
+      descending: 0,
+      'ascending & descending': 0
+    },
+    hard: {
+      ascending: 0,
+      descending: 0,
+      'ascending & descending': 0
+    }
+  },
+  oldhighScore: {
     easy: {
       ascending: 0,
       descending: 0,
@@ -100,16 +112,17 @@ export default function statusReducer(state = initialState, action) {
       return { ...state, score: state.score + 1 }
     case RESET_SCORE:
       if (state.score > state.highScore[action.difficulty][action.mode]) {
+        localStorage.setItem('score', {
+          ...state.highScore,
+          [action.difficulty]: {
+            ...state.highScore[action.difficulty],
+            [action.mode]: state.score
+          }
+        })
         return {
           ...state,
           score: 0,
-          highScore: {
-            ...state.highScore,
-            [action.difficulty]: {
-              ...state.highScore[action.difficulty],
-              [action.mode]: state.score
-            }
-          }
+          highScore: localStorage.getItem('score')
         }
       }
       return { ...state, score: 0 }
