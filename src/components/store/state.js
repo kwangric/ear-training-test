@@ -69,22 +69,24 @@ const notes = [
   'Bb4',
   'B4'
 ]
+const highScore = localStorage.getItem('score') ?? {
+  easy: {
+    ascending: 0,
+    descending: 0,
+    'ascending & descending': 0
+  },
+  hard: {
+    ascending: 0,
+    descending: 0,
+    'ascending & descending': 0
+  }
+}
+
 const initialState = {
   difficulty: false,
   mode: 'ascending',
   score: 0,
-  highScore: localStorage.getItem('score') ?? {
-    easy: {
-      ascending: 0,
-      descending: 0,
-      'ascending & descending': 0
-    },
-    hard: {
-      ascending: 0,
-      descending: 0,
-      'ascending & descending': 0
-    }
-  },
+  highScore,
   notes
 }
 
