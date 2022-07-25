@@ -73,7 +73,7 @@ const initialState = {
   difficulty: false,
   mode: 'ascending',
   score: 0,
-  highScore: localStorage.getItem('score') || {
+  highScore: localStorage.getItem('score') ?? {
     easy: {
       ascending: 0,
       descending: 0,
@@ -91,10 +91,10 @@ const initialState = {
 export default function statusReducer(state = initialState, action) {
   switch (action.type) {
     case START_GAME:
-      console.log(state)
+      console.log(state.highScore)
       return { ...state, difficulty: action.difficulty }
     case END_GAME:
-      console.log(state)
+      console.log(state.highScore)
       return { ...state, difficulty: false }
     case CHANGE_MODE:
       return { ...state, mode: action.mode }
