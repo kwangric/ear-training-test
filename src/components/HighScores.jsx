@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { resetHighScore } from '../store/state'
+import { resetHighScore } from './store/state'
 import {
   Button,
   Typography,
@@ -14,6 +14,10 @@ import {
 const HighScores = () => {
   const highScore = useSelector((state) => state.highScore)
   const dispatch = useDispatch()
+
+  const reset = () => {
+    dispatch(resetHighScore())
+  }
 
   return (
     <>
@@ -58,7 +62,7 @@ const HighScores = () => {
         variant="text"
         size="large"
         sx={{ margin: '1rem' }}
-        onClick={dispatch(resetHighScore())}
+        onClick={reset}
       >
         Reset
       </Button>
