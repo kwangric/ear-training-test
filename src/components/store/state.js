@@ -6,6 +6,7 @@ const END_GAME = 'END_GAME'
 const CHANGE_MODE = 'CHANGE_MODE'
 const INCREASE_SCORE = 'INCREASE_SCORE'
 const RESET_SCORE = 'RESET_SCORE'
+const RESET_HIGHSCORE = 'RESET_HIGHSCORE'
 
 // Action Creator
 export const startGame = (difficulty) => {
@@ -39,6 +40,12 @@ export const resetScore = (difficulty, mode) => {
     type: RESET_SCORE,
     difficulty,
     mode
+  }
+}
+
+export const resetHighScore = () => {
+  return {
+    type: RESET_HIGHSCORE
   }
 }
 
@@ -124,6 +131,22 @@ export default function statusReducer(state = initialState, action) {
         }
       }
       return { ...state, score: 0 }
+    case RESET_HIGHSCORE:
+      localStorage.clear()
+      highScore = {
+        easy: {
+          ascending: 0,
+          descending: 0,
+          ascendingDescending: 0
+        },
+        hard: {
+          ascending: 0,
+          descending: 0,
+          ascendingDescending: 0
+        }
+      }
+      localStorage.setItem('highScore', JSON.stringify(highScore))
+      return { ...state, highScore: highScore }
     default:
       return state
   }
