@@ -55,9 +55,9 @@ const Game = () => {
 
   return (
     <div>
-      {toggleDifficulty()}
-      <Modes />
-      <Score />
+        {toggleDifficulty()}
+        <Modes />
+        <Score />
     </div>
   )
 }
