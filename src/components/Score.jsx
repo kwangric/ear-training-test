@@ -4,7 +4,7 @@ import HighScores from './HighScores'
 import { Button, Fade, Modal, Typography } from '@mui/material'
 
 const Score = () => {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const score = useSelector((state) => state.score)

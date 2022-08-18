@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { resetHighScore } from './store/state'
 import {
   Button,
+  Dialog,
+  DialogActions,
+  DialogTitle,
   Typography,
   TableContainer,
   Table,
@@ -12,11 +15,19 @@ import {
 } from '@mui/material'
 
 const HighScores = () => {
+  const [open, setOpen] = React.useState(false)
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+  const handleClose = () => {
+    setOpen(false)
+  }
   const highScore = useSelector((state) => state.highScore)
   const dispatch = useDispatch()
 
   const reset = () => {
     dispatch(resetHighScore())
+    handleClose()
   }
 
   return (
@@ -62,10 +73,17 @@ const HighScores = () => {
         variant="text"
         size="large"
         sx={{ margin: '1rem' }}
-        onClick={reset}
+        onClick={handleClickOpen}
       >
         Reset
       </Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>{'Are you sure?'}</DialogTitle>
+        <DialogActions sx={{ justifyContent: 'center' }}>
+          <Button onClick={reset}>Yes</Button>
+          <Button onClick={handleClose}>No</Button>
+        </DialogActions>
+      </Dialog>
     </>
   )
 }
