@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="container">
       <ThemeProvider theme={theme}>
-        <Box sx={{ marginTop: '3rem' }}>
+        <Box>
           {status ? (
             <Game />
           ) : (
