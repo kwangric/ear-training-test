@@ -21,9 +21,8 @@ function App() {
   })
 
   return (
-    <>
+    <div className="container">
       <ThemeProvider theme={theme}>
-        <CssBaseline />
         <Box sx={{ marginTop: '3rem' }}>
           {status ? (
             <Game />
@@ -45,7 +44,7 @@ function App() {
           )}
         </Box>
       </ThemeProvider>
-    </>
+    </div>
   )
 }
 
