@@ -14,7 +14,7 @@ body {
 .container {
   padding: 2rem;
   max-width: 640px;
-  min-width: 325px;
+  min-width: 300px;
   background-color: #1c1917;
   position: absolute;
   top: 50%;
