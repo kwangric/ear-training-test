@@ -17,6 +17,9 @@ function App() {
   const theme = createTheme({
     palette: {
       mode: 'dark'
+    },
+    typography: {
+      fontFamily: ['Inter', 'Roboto', 'sans-serif'].join(',')
     }
   })
 
@@ -28,7 +31,7 @@ function App() {
             <Game />
           ) : (
             <div>
-              <Typography variant="h1" sx={{ margin: '1rem' }}>
+              <Typography variant="h2" sx={{ margin: '1rem' }}>
                 Tone Expert
               </Typography>
               <Typography variant="body1">(Best played on desktop)</Typography>
