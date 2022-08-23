@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import HighScores from './HighScores'
-import { Button, Fade, Modal, Typography } from '@mui/material'
+import Button from '@mui/material/Button'
+import Fade from '@mui/material/Fade'
+import Modal from '@mui/material/Modal'
+import Typography from '@mui/material/Typography'
 
 const Score = () => {
   const [open, setOpen] = useState(false)
@@ -25,14 +28,14 @@ const Score = () => {
             <Button
               variant="text"
               size="large"
-              sx={{ margin: '1rem' }}
+              sx={{ marginTop: '1rem' }}
               onClick={handleOpen}
             >
               High Scores
             </Button>
             <Modal open={open} onClose={handleClose}>
               <Fade in={open}>
-                <div className="modal">
+                <div className="high-score-modal">
                   <HighScores />
                 </div>
               </Fade>

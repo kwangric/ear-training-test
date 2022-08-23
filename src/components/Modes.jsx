@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeMode } from './store/state'
-import { TextField, MenuItem } from '@mui/material'
+import TextField from '@mui/material/TextField'
+import MenuItem from '@mui/material/MenuItem'
 
 const Modes = () => {
   const difficulty = useSelector((state) => state.difficulty)
