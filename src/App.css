@@ -25,6 +25,12 @@ body {
   box-shadow: 24;
 }
 
+.about {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
 .modal {
   padding: 1rem 1rem 0 1rem;
   position: absolute;

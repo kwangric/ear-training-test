@@ -6,6 +6,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 
 function App() {
   const [status, setStatus] = useState(false)
@@ -46,6 +47,7 @@ function App() {
               </Button>
             </div>
           )}
+          <HelpOutlineIcon className="about" />
         </Box>
       </ThemeProvider>
     </div>
