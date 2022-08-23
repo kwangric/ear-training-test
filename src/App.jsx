@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import './App.css'
 import Game from './components/Game'
 import * as Tone from 'tone'
-import { Box, Button, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
 
 function App() {
   const [status, setStatus] = useState(false)

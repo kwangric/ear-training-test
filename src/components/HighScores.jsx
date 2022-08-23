@@ -1,18 +1,16 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetHighScore } from './store/state'
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogTitle,
-  Typography,
-  TableContainer,
-  Table,
-  TableBody,
-  TableRow,
-  TableCell
-} from '@mui/material'
+import Button from '@mui/material/Button'
+import Dialog from '@mui/material/Dialog'
+import DialogActions from '@mui/material/DialogActions'
+import DialogTitle from '@mui/material/DialogTitle'
+import Typography from '@mui/material/Typography'
+import TableContainer from '@mui/material/TableContainer'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableRow from '@mui/material/TableRow'
+import TableCell from '@mui/material/TableCell'
 
 const HighScores = () => {
   const [open, setOpen] = React.useState(false)

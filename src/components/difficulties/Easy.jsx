@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { endGame, increaseScore, resetScore } from '../store/state'
-import { Button, Typography } from '@mui/material'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 import * as Tone from 'tone'
 
 const Game = () => {

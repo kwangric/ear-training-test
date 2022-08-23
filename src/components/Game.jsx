@@ -5,7 +5,8 @@ import Hard from './difficulties/Hard'
 import Modes from './Modes'
 import Score from './Score'
 import { startGame } from './store/state'
-import { Button, Typography } from '@mui/material'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 
 const Game = () => {
   const difficulty = useSelector((state) => state.difficulty)
