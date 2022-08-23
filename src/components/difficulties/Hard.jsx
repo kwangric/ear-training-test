@@ -9,7 +9,7 @@ const Game = () => {
   const notes = useSelector((state) => state.notes)
   const mode = useSelector((state) => state.mode)
   const dispatch = useDispatch()
-  const [status, setStatus] = useState(true)
+  const [status, setStatus] = useState('active')
   const [initialNote, setInitialNote] = useState(null)
   const [endNote, setEndNote] = useState(null)
   const [interval, setInterval] = useState(null)
@@ -74,7 +74,7 @@ const Game = () => {
     setInitialNote(firstNote)
     setEndNote(secondNote)
     setInterval(Math.abs(newInterval))
-    setStatus(true)
+    setStatus('active')
     sequence(firstNote, secondNote)
   }
 
@@ -89,7 +89,7 @@ const Game = () => {
       setInitialNote(null)
       setEndNote(null)
       setInterval(null)
-      setStatus(false)
+      setStatus('correct')
     } else {
       dispatch(resetScore('hard', mode))
       setAnswer('Try again!')
@@ -102,7 +102,7 @@ const Game = () => {
     setInitialNote(null)
     setEndNote(null)
     setInterval(null)
-    setStatus(false)
+    setStatus('abandon')
   }
 
   const changeMode = () => {
@@ -138,7 +138,7 @@ const Game = () => {
         {answer ? answer : '\u00A0'}
       </Typography>
 
-      {status ? (
+      {status === 'active' ? (
         <>
           {hardIntervals.map((interval, index) => (
             <Button
@@ -175,6 +175,25 @@ const Game = () => {
             onClick={abandonGame}
           >
             Give Up
+          </Button>
+        </>
+      ) : status === 'correct' ? (
+        <>
+          <Button
+            variant="outlined"
+            size="large"
+            sx={{ margin: '0.25rem' }}
+            onClick={setGame}
+          >
+            Continue?
+          </Button>
+          <Button
+            variant="outlined"
+            size="large"
+            sx={{ margin: '0.25rem' }}
+            onClick={changeMode}
+          >
+            End Game
           </Button>
         </>
       ) : (
