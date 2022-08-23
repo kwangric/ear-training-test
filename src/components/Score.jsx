@@ -28,14 +28,14 @@ const Score = () => {
             <Button
               variant="text"
               size="large"
-              sx={{ margin: '1rem' }}
+              sx={{ marginTop: '1rem' }}
               onClick={handleOpen}
             >
               High Scores
             </Button>
             <Modal open={open} onClose={handleClose}>
               <Fade in={open}>
-                <div className="modal">
+                <div className="high-score-modal">
                   <HighScores />
                 </div>
               </Fade>
